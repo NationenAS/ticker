@@ -28,12 +28,11 @@ onMount(async () => {
     <div>Laster..</div>
 {:else}
     <div class=ticker-title>Energi</div>
-    <div class=ticker-symbol>
-        Strøm ({elRegion}) <Arrow type="{data.symbols.Strøm[elRegion].change == 0 ? "neu" : data.symbols.Strøm[elRegion].change > 0 ? "pos" : "neg"}" /> <strong>{data.symbols.Strøm[elRegion].data[1].avg}</strong> øre
-    </div>
-    <div class="ticker-symbol">
-        
-    </div>
+    <div class=ticker-symbol>Strøm ({elRegion}) <Arrow type="{data.symbols.Strøm[elRegion].change == 0 ? "neu" : data.symbols.Strøm[elRegion].change > 0 ? "pos" : "neg"}" /> <strong>{data.symbols.Strøm[elRegion].data[1].avg}</strong> øre</div>
+    <div class=ticker-symbol>Strøm (Nord) <Arrow type="{data.symbols.Strøm.Nord.change == 0 ? "neu" : data.symbols.Strøm.Nord.change > 0 ? "pos" : "neg"}" /> <strong>{data.symbols.Strøm.Nord.data[1].avg}</strong> øre</div>
+    <div class=ticker-symbol>Råolje <Arrow type="{data.symbols.Råolje.change == 0 ? "neu" : data.symbols.Råolje.change > 0 ? "pos" : "neg"}" /> $<strong>{data.symbols.Råolje.now}</strong></div>
+    <div class=ticker-title>Råvarer</div>
+    <div class=ticker-symbol>Soya <Arrow type="{data.symbols.Soya.change == 0 ? "neu" : data.symbols.Soya.change > 0 ? "pos" : "neg"}" /> $<strong>{data.symbols.Soya.now}</strong></div>
 {/if}
 
 
@@ -45,16 +44,20 @@ onMount(async () => {
     height: 100%;
     width: 100%;
     font-family: "Open Sans", sans-serif;
-    font-size: 12px;
+    font-size: 12.5px;
 }
 .ticker > div {
     display: inline-block;
-    margin-right: 5px;
+    margin-right: 8px;
 }
 .ticker-title {
     text-transform: uppercase;
     font-weight: bold;
     color: #406619;
+}
+.ticker-symbol:not(:last-of-type) {
+    padding-right: 8px;
+    border-right: 1px solid #ccc;
 }
 
 </style>
