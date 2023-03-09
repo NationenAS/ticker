@@ -1,4 +1,5 @@
-#app {
+#ticker {
     height: 24px;
     overflow: hidden;
+    user-select: none;
 }
