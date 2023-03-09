@@ -11,9 +11,9 @@ export let border
     <span class="ticker-symbol-title">{title}</span>
     <Arrow type="{data.change == 0 ? "neu" : data.change > 0 ? "pos" : "neg"}" />
     {#if title == "Soya" || title == "Råolje"}
-    $<span class="ticker-symbol-value"><strong>{data.now}</strong></span>
+    $<span class="ticker-symbol-value"><strong>{parseFloat(data.now).toLocaleString("nb-NO")}</strong></span>
     {:else}
-    <span class="ticker-symbol-value"><strong>{data.avg}</strong> øre</span>
+    <span class="ticker-symbol-value"><strong>{parseFloat(data.avg).toFixed(0)}</strong> øre</span>
     {/if}
 </div>
 
