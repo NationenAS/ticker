@@ -39,7 +39,7 @@ function toggle() {
         Strøm ({elRegion}) 
         <Arrow type="{data.symbols.Strøm[elRegion].change == 0 ? "neu" : data.symbols.Strøm[elRegion].change > 0 ? "pos" : "neg"}" /> <strong>{data.symbols.Strøm[elRegion].data[1].avg}</strong> øre
     </div>
-    <div on:click={toggle} on:keypress={toggle} style="cursor: pointer; text-decoration:underline; margin-right: 8px;">{ !expand ? "Se mer" : "Lukk" }</div>
+    <div on:click={toggle} on:keypress={toggle} class="toggle">{ !expand ? "Se mer" : "Lukk" }</div>
     {#if expand}
     <div in:fly="{{ x: 50, duration: 300, delay:200 }}" out:fly="{{ x: 50, duration: 200 }}">
         <Hours data={data.symbols.Strøm[elRegion].data[1].hours} />
@@ -75,6 +75,19 @@ function toggle() {
 }
 .ticker-symbol {
     margin-right: 8px;
+}
+.toggle {
+    cursor: pointer;
+    margin-right: 8px;
+    font-size: .8em;
+    text-transform: uppercase;
+    padding: 2px 3px;
+    line-height: 1;
+    border: 1px solid #aaa;
+    background: #eee;
+}
+.toggle:hover {
+    background: #ddd;
 }
 .border {
     padding-left: 8px;
