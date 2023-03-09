@@ -1,9 +1,12 @@
 <script>
 import { onMount } from "svelte"
+import { fly } from "svelte/transition";
 import Arrow from "./Arrow.svelte"
+import Hours from "./Hours.svelte"
 
 let data
 let elRegion = "Øst"
+let expand = false
 
 onMount(async () => {
     fetch("https://ravarepriser.vercel.app/api/now")
@@ -13,6 +16,10 @@ onMount(async () => {
     })
     .catch(e => console.log(e))
 })
+
+function toggle() {
+    expand = !expand
+}
 
 </script>
 
@@ -28,11 +35,23 @@ onMount(async () => {
     <div>Laster..</div>
 {:else}
     <div class=ticker-title>Energi</div>
-    <div class=ticker-symbol>Strøm ({elRegion}) <Arrow type="{data.symbols.Strøm[elRegion].change == 0 ? "neu" : data.symbols.Strøm[elRegion].change > 0 ? "pos" : "neg"}" /> <strong>{data.symbols.Strøm[elRegion].data[1].avg}</strong> øre</div>
-    <div class=ticker-symbol>Strøm (Nord) <Arrow type="{data.symbols.Strøm.Nord.change == 0 ? "neu" : data.symbols.Strøm.Nord.change > 0 ? "pos" : "neg"}" /> <strong>{data.symbols.Strøm.Nord.data[1].avg}</strong> øre</div>
-    <div class=ticker-symbol>Råolje <Arrow type="{data.symbols.Råolje.change == 0 ? "neu" : data.symbols.Råolje.change > 0 ? "pos" : "neg"}" /> $<strong>{data.symbols.Råolje.now}</strong></div>
-    <div class=ticker-title>Råvarer</div>
-    <div class=ticker-symbol>Soya <Arrow type="{data.symbols.Soya.change == 0 ? "neu" : data.symbols.Soya.change > 0 ? "pos" : "neg"}" /> $<strong>{data.symbols.Soya.now}</strong></div>
+    <div class=ticker-symbol>
+        Strøm ({elRegion}) 
+        <Arrow type="{data.symbols.Strøm[elRegion].change == 0 ? "neu" : data.symbols.Strøm[elRegion].change > 0 ? "pos" : "neg"}" /> <strong>{data.symbols.Strøm[elRegion].data[1].avg}</strong> øre
+    </div>
+    <div on:click={toggle} on:keypress={toggle} style="cursor: pointer; text-decoration:underline; margin-right: 8px;">{ !expand ? "Se mer" : "Lukk" }</div>
+    {#if expand}
+    <div in:fly="{{ x: 50, duration: 300, delay:200 }}" out:fly="{{ x: 50, duration: 200 }}">
+        <Hours data={data.symbols.Strøm[elRegion].data[1].hours} />
+    </div>
+    {:else}
+    <div class=ticker-not-el in:fly="{{ x: 50, duration: 200, delay:200 }}" out:fly="{{ x: 50, duration: 200 }}">
+        <div class="ticker-symbol border">Strøm (Nord) <Arrow type="{data.symbols.Strøm.Nord.change == 0 ? "neu" : data.symbols.Strøm.Nord.change > 0 ? "pos" : "neg"}" /> <strong>{data.symbols.Strøm.Nord.data[1].avg}</strong> øre</div>
+        <div class="ticker-symbol border">Råolje <Arrow type="{data.symbols.Råolje.change == 0 ? "neu" : data.symbols.Råolje.change > 0 ? "pos" : "neg"}" /> $<strong>{data.symbols.Råolje.now}</strong></div>
+        <div class=ticker-title>Råvarer</div>
+        <div class=ticker-symbol>Soya <Arrow type="{data.symbols.Soya.change == 0 ? "neu" : data.symbols.Soya.change > 0 ? "pos" : "neg"}" /> $<strong>{data.symbols.Soya.now}</strong></div>
+    </div>
+    {/if}
 {/if}
 
 
@@ -45,19 +64,26 @@ onMount(async () => {
     width: 100%;
     font-family: "Open Sans", sans-serif;
     font-size: 12.5px;
-}
-.ticker > div {
-    display: inline-block;
-    margin-right: 8px;
+    display: flex;
+    align-items: center;
 }
 .ticker-title {
+    margin-right: 8px;
     text-transform: uppercase;
     font-weight: bold;
     color: #406619;
 }
-.ticker-symbol:not(:last-of-type) {
-    padding-right: 8px;
-    border-right: 1px solid #ccc;
+.ticker-symbol {
+    margin-right: 8px;
+}
+.border {
+    padding-left: 8px;
+    border-left: 1px solid #ccc;
+}
+.ticker-not-el {
+    display: flex;
+    align-items: center;
+    flex: 1;
 }
 
 </style>
