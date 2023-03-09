@@ -34,20 +34,18 @@ function toggle() {
 {#if data === undefined }
     <div>Laster..</div>
 {:else}
-    <div class=ticker-title>Energi</div>
-    <Symbol title="Strøm ({elRegion})" data={data.symbols.Strøm[elRegion]} border=false />
+    <div class=ticker-title>Strøm</div>
+    <Symbol title="{elRegion}" data={data.symbols.Strøm[elRegion]} border=false />
     <div class="ticker-toggle">
         <div on:click={toggle} on:keypress={toggle}>{ !expand ? "Se mer" : "Lukk" }</div>
     </div>
     {#if expand}
     <Hours data={data.symbols.Strøm[elRegion].data[1].hours} />
     {:else}
-    <div class=ticker-not-el in:fly|local="{{ x: 50, duration: 100, delay:100 }}" out:fly="{{ x: 50, duration: 100 }}">
-        <Symbol title="Strøm (Nord)" data={data.symbols.Strøm.Nord} border=true />
-        <Symbol title="Råolje" data={data.symbols.Råolje} border=true />
-        <div class="ticker-title" style="margin-left: 10px;">Råvarer</div>
-        <Symbol title="Soya" data={data.symbols.Soya} border=false />
-    </div>
+    <Symbol title="Nord" data={data.symbols.Strøm.Nord} border=true />
+    <div class="ticker-title" style="margin-left: 10px;" in:fly|local="{{ x: 50, duration: 100, delay:100 }}" out:fly="{{ x: 50, duration: 100 }}">Råvarer</div>
+    <Symbol title="Råolje" data={data.symbols.Råolje} border=false />
+    <Symbol title="Soya" data={data.symbols.Soya} border=true />
     {/if}
 {/if}
 
@@ -72,8 +70,7 @@ function toggle() {
     display: none;
 }
 .ticker-title,
-.ticker-toggle,
-.ticker-not-el {
+.ticker-toggle {
     display: inline-flex;
     align-items: center;
     height: 100%;
