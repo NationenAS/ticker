@@ -45,7 +45,7 @@ function toggle() {
         <Hours data={data.symbols.Strøm[elRegion].data[1].hours} />
     </div>
     {:else}
-    <div class=ticker-not-el in:fly="{{ x: 50, duration: 200, delay:200 }}" out:fly="{{ x: 50, duration: 200 }}">
+    <div class=ticker-not-el in:fly|local="{{ x: 50, duration: 200, delay:200 }}" out:fly="{{ x: 50, duration: 200 }}">
         <div class="ticker-symbol border">Strøm (Nord) <Arrow type="{data.symbols.Strøm.Nord.change == 0 ? "neu" : data.symbols.Strøm.Nord.change > 0 ? "pos" : "neg"}" /> <strong>{data.symbols.Strøm.Nord.data[1].avg}</strong> øre</div>
         <div class="ticker-symbol border">Råolje <Arrow type="{data.symbols.Råolje.change == 0 ? "neu" : data.symbols.Råolje.change > 0 ? "pos" : "neg"}" /> $<strong>{data.symbols.Råolje.now}</strong></div>
         <div class=ticker-title>Råvarer</div>
