@@ -32,7 +32,7 @@ function toggle() {
 <div class=ticker-track>
 
 {#if data === undefined }
-    <div>Laster..</div>
+    <div>Laster...</div>
 {:else}
     <div class=ticker-title>Strøm</div>
     <Symbol title="{elRegion}" data={data.symbols.Strøm[elRegion]} border=false />
