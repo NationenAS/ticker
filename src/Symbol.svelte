@@ -13,8 +13,10 @@ export let border
     <Arrow type="{data.change == 0 ? "neu" : data.change > 0 ? "pos" : "neg"}" />
     {#if title == "Soya" || title == "Råolje"}
     $<span class="ticker-symbol-value"><strong>{parseFloat(data.now).toLocaleString("nb-NO")}</strong></span>
-    {:else}
+    {:else if title == "Øst" || title == "Nord"}
     <span class="ticker-symbol-value"><strong>{parseFloat(data.avg).toFixed(0)}</strong> øre</span>
+    {:else if title == "KPI"}
+    <span class="ticker-symbol-value"><strong>{parseFloat(data.now).toLocaleString("nb-NO")}</strong>%</span>
     {/if}
 </div>
 

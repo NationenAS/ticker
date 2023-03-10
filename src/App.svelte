@@ -21,6 +21,11 @@ function toggle() {
     expand = !expand
 }
 
+let kpi = {
+    now: 6.3,
+    change: -0.75
+}
+
 </script>
 
 <svelte:head>
@@ -46,6 +51,8 @@ function toggle() {
     <div class="ticker-title" style="margin-left: 10px;" in:fly|local="{{ x: 50, duration: 100, delay:100 }}" out:fly="{{ x: 50, duration: 100 }}">Råvarer</div>
     <Symbol title="Råolje" data={data.symbols.Råolje} border=false />
     <Symbol title="Soya" data={data.symbols.Soya} border=true />
+    <div class="ticker-title" style="margin-left: 10px;" in:fly|local="{{ x: 50, duration: 100, delay:100 }}" out:fly="{{ x: 50, duration: 100 }}">Makro</div>
+    <Symbol title="KPI" data={kpi} border=false />
     {/if}
 {/if}
 
