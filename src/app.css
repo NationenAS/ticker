@@ -1,5 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    max-height: 30px;
+}
+body {
+    background: transparent; 
+    margin: 0;
+}
 #ticker {
-    height: 24px;
+    height: 100%;
     overflow: hidden;
     user-select: none;
+}
+@media (max-width:532px) {
+    #ticker {
+        margin-left: 15px;
+    }
 }

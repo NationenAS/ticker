@@ -86,7 +86,7 @@ function toggle() {
     margin-right: 8px;
     font-size: .8em;
     text-transform: uppercase;
-    padding: 2px 3px;
+    padding: 2.5px 3px;
     line-height: 1;
     border: 1px solid #aaa;
     background: #eee;
