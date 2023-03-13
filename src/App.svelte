@@ -9,7 +9,7 @@ let elRegion = "Øst"
 let expand = false
 
 onMount(async () => {
-    fetch("https://raavarepriser.vercel.app/api/now")
+    fetch("https://ravarepriser.vercel.app/api/now")
     .then(r => r.json())
     .then(d => {
         data = d
