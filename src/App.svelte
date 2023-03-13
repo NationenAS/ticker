@@ -9,7 +9,7 @@ let elRegion = "Øst"
 let expand = false
 
 onMount(async () => {
-    fetch("https://ravarepriser.vercel.app/api/now")
+    fetch("https://raavarepriser.vercel.app/api/now")
     .then(r => r.json())
     .then(d => {
         data = d
@@ -43,7 +43,11 @@ let customData= {
 <div class=ticker-track>
 
 {#if data === undefined }
-    <div>Laster...</div>
+    <div class="ticker-loading">
+        <div style="animation-delay: 0.2s;"></div>
+        <div style="animation-delay: 0.4s;"></div>
+        <div style="animation-delay: 0.6s;"></div>
+    </div>
 {:else}
     <div class=ticker-title>Strøm</div>
     <Symbol title="{elRegion}" data={data.symbols.Strøm[elRegion]} border=false description="Gjennomsnitt i dag per kWh uten moms." />
@@ -83,6 +87,40 @@ let customData= {
 }
 .ticker-track::-webkit-scrollbar {
     display: none;
+}
+.ticker-loading {
+    width: 20px;
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+}
+.ticker-loading > div {
+    width: 3px;
+    height: 3px;
+    animation: loading 1.5s infinite ease-in-out;
+    transform: scale(1);
+    transform-origin: center;
+    clip-path: circle();
+    background: black;
+    opacity: 0;
+}
+@keyframes loading {
+    0% {
+        transform: scale(1);
+        opacity: 0;
+    } 
+    30% {
+        transform: scale(1.4);
+        opacity: 1;
+    } 
+    40% {
+        transform: scale(1.1);
+    }
+    60% {
+        transform: scale(1);
+        opacity: 0;
+    }
 }
 .ticker-title,
 .ticker-toggle {
