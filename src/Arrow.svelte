@@ -8,10 +8,13 @@
 
 <style>
 svg {
-    height: 9px;
+    height: 0.75em;
+    width: auto;
+    margin-right: 1px;
+    margin-bottom: 1px;
 }
 .pos {
-    fill: #fcda51;
+    fill: #e4ba13;
 }
 .neg {
     fill: #333;
@@ -19,6 +22,8 @@ svg {
     transform-origin: center;
 }
 .neu {
-    fill: grey
+    fill: grey;
+    transform: rotate(90deg);
+    transform-origin: center;
 }
 </style>

@@ -52,10 +52,10 @@ function highlight(i) {
     <span class="border">{@html hour}{@html value}</span>
     {/if}
     <span class="border">
-        Høyest: Kl <span class="red">{parseInt(data.findIndex(e => e == max)).toLocaleString('nb-NO', { minimumIntegerDigits: 2 })}-{(parseInt(data.findIndex(e => e == max)) + 1).toLocaleString('nb-NO', { minimumIntegerDigits: 2 })}</span> <strong>({max.toFixed(0)}</strong> øre)
+        Dyrest: Kl <span class="red">{parseInt(data.findIndex(e => e == max)).toLocaleString('nb-NO', { minimumIntegerDigits: 2 })}-{(parseInt(data.findIndex(e => e == max)) + 1).toLocaleString('nb-NO', { minimumIntegerDigits: 2 })}</span> <strong>({max.toFixed(0)}</strong> øre)
     </span>
     <span>
-        Lavest: Kl <span class="green">{parseInt(data.findIndex(e => e == min)).toLocaleString('nb-NO', { minimumIntegerDigits: 2 })}-{(parseInt(data.findIndex(e => e == min)) + 1).toLocaleString('nb-NO', { minimumIntegerDigits: 2 })}</span> <strong>({min.toFixed(0)}</strong> øre)
+        Billigst: Kl <span class="green">{parseInt(data.findIndex(e => e == min)).toLocaleString('nb-NO', { minimumIntegerDigits: 2 })}-{(parseInt(data.findIndex(e => e == min)) + 1).toLocaleString('nb-NO', { minimumIntegerDigits: 2 })}</span> <strong>({min.toFixed(0)}</strong> øre)
     </span>
 </div>
 

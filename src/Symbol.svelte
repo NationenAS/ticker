@@ -3,19 +3,20 @@ import Arrow from "./Arrow.svelte"
 import { fly } from "svelte/transition"
 
 export let title
+export let description
 export let data
 export let border
 
 </script>
 
-<div class="ticker-symbol" class:border="{border == "true"}" in:fly|local="{{ x: 50, duration: 100, delay:100 }}" out:fly="{{ x: 50, duration: 100 }}">
+<div class="ticker-symbol" title="{description}" class:border="{border == "true"}" in:fly|local="{{ x: 50, duration: 100, delay:100 }}" out:fly="{{ x: 50, duration: 100 }}">
     <span class="ticker-symbol-title">{title}</span>
     <Arrow type="{data.change == 0 ? "neu" : data.change > 0 ? "pos" : "neg"}" />
-    {#if title == "Soya" || title == "Råolje"}
+    {#if title == "Soya" || title == "Råolje" || title == "Gass" }
     $<span class="ticker-symbol-value"><strong>{parseFloat(data.now).toLocaleString("nb-NO")}</strong></span>
     {:else if title == "Øst" || title == "Nord"}
     <span class="ticker-symbol-value"><strong>{parseFloat(data.avg).toFixed(0)}</strong> øre</span>
-    {:else if title == "KPI"}
+    {:else if title == "KPI" || title == "Ledighet"}
     <span class="ticker-symbol-value"><strong>{parseFloat(data.now).toLocaleString("nb-NO")}</strong>%</span>
     {/if}
 </div>
@@ -29,9 +30,6 @@ export let border
 }
 .ticker-symbol-title {
     margin-right: 5px;
-}
-.ticker-symbol-value {
-    margin-left: 1px;
 }
 .border {
     padding-left: 8px;
