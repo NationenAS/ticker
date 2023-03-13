@@ -14,8 +14,3 @@ body {
     overflow: hidden;
     user-select: none;
 }
-@media (max-width:532px) {
-    #ticker {
-        margin-left: 15px;
-    }
-}
