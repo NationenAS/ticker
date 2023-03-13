@@ -58,11 +58,11 @@ let customData= {
     <Hours data={data.symbols.Strøm[elRegion].data[1].hours} />
     {:else}
     <Symbol title="Nord" data={data.symbols.Strøm.Nord} description="Gjennomsnitt i dag, per kWh uten moms." />
-    <div class="ticker-title" style="margin-left: 10px;" in:fly|local="{{ x: 50, duration: 100, delay:100 }}" out:fly="{{ x: 50, duration: 100 }}">Råvarer</div>
+    <div class="ticker-title" in:fly|local="{{ x: 50, duration: 100, delay:100 }}" out:fly="{{ x: 50, duration: 100 }}">Råvarer</div>
     <Symbol title="Råolje" data={data.symbols.Råolje} description="Brent olje, per fat." />
     <Symbol title="Gass" data={data.symbols.Gass} description="Naturgass (TTF, leveranse i april), per MWh." />
     <Symbol title="Soya" data={data.symbols.Soya} description="Soyabønner, per tonn." />
-    <div class="ticker-title" style="margin-left: 10px;" in:fly|local="{{ x: 50, duration: 100, delay:100 }}" out:fly="{{ x: 50, duration: 100 }}">Makro</div>
+    <div class="ticker-title" in:fly|local="{{ x: 50, duration: 100, delay:100 }}" out:fly="{{ x: 50, duration: 100 }}">Makro</div>
     <Symbol title="KPI" data={customData.kpi} description="Konsumprisindeks endring, feb 22 - feb 23." />
     <Symbol title="Ledighet" data={customData.arb} description="Arbeidsledige i prosent av arbeidsstyrken, jan 22." />
     {/if}
@@ -133,6 +133,9 @@ let customData= {
     text-transform: uppercase;
     font-weight: bold;
     color: #406619;
+}
+.ticker-title:not(:first-child) {
+    margin-left: 5px;
 }
 .ticker-toggle div {
     cursor: pointer;
