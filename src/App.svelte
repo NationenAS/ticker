@@ -27,8 +27,8 @@ let customData= {
         change: -0.75
     },
     arb: {
-        now: 3.4,
-        change: 0
+        now: 3.6,
+        change: 0.2
     }
 }
 
@@ -64,7 +64,7 @@ let customData= {
     <Symbol title="Soya" data={data.symbols.Soya} description="Soyabønner, per tonn." />
     <div class="ticker-title" in:fly|local="{{ x: 50, duration: 100, delay:100 }}" out:fly="{{ x: 50, duration: 100 }}">Makro</div>
     <Symbol title="KPI" data={customData.kpi} description="Konsumprisindeks endring, feb 22 - feb 23." />
-    <Symbol title="Ledighet" data={customData.arb} description="Arbeidsledige i prosent av arbeidsstyrken, jan 22." />
+    <Symbol title="Ledighet" data={customData.arb} description="Arbeidsledige i prosent av arbeidsstyrken, feb 23." />
     {/if}
 {/if}
 
