@@ -34,7 +34,7 @@ function highlight(i) {
 
 </script>
 
-<div class="ticker-el-expanded" in:fly="{{ x: 50, duration: 100, delay:100 }}" out:fly="{{ x: 50, duration: 100 }}">
+<div class="ticker-el-expanded" in:fly="{{ y: 20, duration: 100, delay:200 }}" out:fly="{{ y: -20, duration: 100 }}">
     <div class="ticker-el-hours">
         <svg viewBox="0 0 {width} {height}" on:mouseleave={() => { highlight() }}>
             <rect class="quartile-marker" x="{width / 4}" width="1" height="100%" />

@@ -8,7 +8,7 @@ export let data
 
 </script>
 
-<div class="ticker-symbol" title="{description}" in:fly|local="{{ x: 50, duration: 100, delay:100 }}" out:fly="{{ x: 50, duration: 100 }}">
+<div class="ticker-symbol" title="{description}" in:fly|local="{{ y: 20, duration: 100, delay:200 }}" out:fly="{{ y: -20, duration: 100 }}">
     <span class="ticker-symbol-title">{title}</span>
     <Arrow type="{data.change == 0 ? "neu" : data.change > 0 ? "pos" : "neg"}" />
     {#if title == "Soya" || title == "Råolje" || title == "Gass" }
