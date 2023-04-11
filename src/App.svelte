@@ -24,8 +24,8 @@ function toggle() {
 
 let customData= {
     kpi: {
-        now: 6.3,
-        change: -0.75
+        now: 6.5,
+        change: 0.2
     },
     arb: {
         now: 3.6,
@@ -64,7 +64,7 @@ let customData= {
     <!-- <Symbol title="Gass" data={data.symbols.Gass} description="Naturgass (TTF, leveranse i april), per MWh." /> -->
     <Symbol title="Soya" data={data.symbols.Soya} description="Soyabønner, per tonn." />
     <div class="ticker-title" in:fly|local="{{ y: 20, duration: 100, delay:200 }}" out:fly="{{ y: -20, duration: 100 }}">Makro</div>
-    <Symbol title="KPI" data={customData.kpi} description="Konsumprisindeks endring, feb 22 - feb 23." />
+    <Symbol title="KPI" data={customData.kpi} description="Konsumprisindeks endring, mars 22 - mars 23." />
     <Symbol title="Ledighet" data={customData.arb} description="Arbeidsledige i prosent av arbeidsstyrken, feb 23." />
     {/if}
 {/if}
